@@ -1,0 +1,8 @@
+Text,Category
+"This is some test data. It doesn't matter what it says, but should count as category 1",1
+"This is some test data. It doesn't matter what it says, but should count as category 2",2
+"This is some test data. It doesn't matter what it says, but should count as category 3",3
+"   This is more test data. It says something different than before, but is still category 1",1
+"This is more test data.  It says something different than before,  but is still category  2",2
+" This is more test data. It says something different than before, but is still category 3",3
+,
