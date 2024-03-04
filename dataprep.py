@@ -9,14 +9,16 @@ from nltk.stem import WordNetLemmatizer
 def import_data(path):
     #Converts .csv data to Pandas dataframe
     df = pd.read_csv(path)
-
+    df = df.dropna()
     return df
 
 def clean_data(df):
     #Converts all text to lowercase
     df['Text'] = df['Text'].str.lower()
     #Removes excess whitespace
-    df['Text'] = ' '.join(df['Text'].str.split())
+    def remove_whitespaces(text):
+        return ' '.join(text.split())
+    df['Text'] = df['Text'].apply(remove_whitespaces)
 
     #Installs nltk punkt
     nltk.download('punkt')
@@ -37,7 +39,9 @@ def clean_data(df):
     df['Text'] = df['Text'].apply(remove_stopwords)
 
     #Removes punctuation from data
-    df['Text'] = RegexpTokenizer(r'\w+').tokenize(' '.join(df['Text']))
+    def remove_punctuation(text):
+        return RegexpTokenizer(r'\w+').tokenize(' '.join(text))
+    df['Text'] = df['Text'].apply(remove_punctuation)
 
     #Installs lemmatization tools
     nltk.download('averaged_perceptron_tagger')
