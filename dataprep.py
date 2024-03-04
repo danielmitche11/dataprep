@@ -82,6 +82,8 @@ def clean_data(df):
 
     return df
 
+def export_data(df, filename):
+    df.to_csv(f'./{filename}.csv', index = False, encoding = 'utf-8')
 
 
             
